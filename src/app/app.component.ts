@@ -2,12 +2,14 @@ import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Product } from './product';
 import { CalculateService } from './calculate.service';
+import { ListComponent } from './list/list.component';
+import { Product } from '../product';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,FormsModule],
+  imports: [CommonModule, RouterOutlet,FormsModule,ListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -16,15 +18,19 @@ export class AppComponent {
   formValidity: boolean = false;
   message: string = '';
   name = '';
-  price = '';
+  price = '';  
+  totalCost: any =0;
 
-  products = [
-    { product_name: 'One Plus',product_price: 17000, product_id: 1 },
-    { product_name: 'IPhone',product_price: 51000, product_id: 2 },
-    { product_name: 'Redmi',product_price: 12000, product_id: 3 },
-];
+  
+  constructor(private calculateService : CalculateService ){
 
- 
+  }
+  
+  products: Product[] = [];
+
+  getTotalCost(){
+    this.totalCost = this.calculateService.addNumber(10,20);  
+  }
   changeMessage(){
 
     const newProduct = {
@@ -35,10 +41,8 @@ export class AppComponent {
     console.log(newProduct);
     this.products.push(newProduct);
     this.message = 'Product Added Successfully.';
-    this.formValidity = true;
+    //this.formValidity = true;
   }
 
-  private calculateService = Inject(CalculateService);
-  totalCost = this.calculateService.add(10,20);
 
 }
