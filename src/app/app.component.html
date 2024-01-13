@@ -121,5 +121,9 @@
 <button class="btn btn-outline-primary" (click)="getTotalCost()">Get Cost</button>
 <p>Total Cost is {{totalCost}}</p>
 
-<app-list></app-list>
+<app-list [data] = "totalCost" (getInfoEvent)="getInfo($event)"></app-list>
+<h2>{{username}}</h2>
+<br>
+<input type="text" class="form-control" [(ngModel)] ="info" />
+<h3>{{ info }}</h3>
 <router-outlet></router-outlet>

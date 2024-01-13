@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -9,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class ListComponent {
 
+  @Input() data: any = 0;
+
+  @Output() getInfoEvent = new EventEmitter<string>();
 }

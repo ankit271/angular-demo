@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CalculateService } from './calculate.service';
 import { ListComponent } from './list/list.component';
 import { Product } from '../product';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +21,8 @@ export class AppComponent {
   name = '';
   price = '';  
   totalCost: any =0;
-
-  
+  username: string = '';
+  info: any = '';
   constructor(private calculateService : CalculateService ){
 
   }
@@ -44,5 +45,8 @@ export class AppComponent {
     //this.formValidity = true;
   }
 
+  getInfo(username:string){
+      this.username = username;      
+  }
 
 }
