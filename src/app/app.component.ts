@@ -4,13 +4,14 @@ import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CalculateService } from './calculate.service';
 import { ListComponent } from './list/list.component';
+import { CustomCardComponent } from './custom-card/custom-card.component'; 
 import { Product } from '../product';
-import { log } from 'node:console';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,FormsModule,ListComponent],
+  imports: [CommonModule, RouterOutlet,FormsModule,ListComponent,CustomCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
